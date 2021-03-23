@@ -1,0 +1,43 @@
+<br>
+<hr>
+<div class="container">
+
+<div class="row">
+    <div class="col-md-6">
+        
+        <div class="carousel-inner">
+            <div *ngFor="let car of carImages" [class]="getCurrentImageClass(car)"  >
+              <img src =  "{{carImageBasePath}}{{car.imagePath}}"  class="img-thumbnail" alt="  {{car.imagePath }}"  />
+            </div>
+          </div>
+         
+    </div>
+    <div class="col-md-6">
+        <table class="table table-success table-striped">
+        
+            <tbody *ngFor="let cardetail of carDetails">
+            <tr>
+                <th scope="row">Model</th>
+                <td>{{cardetail.carName}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Marka</th>
+                <td>{{cardetail.brandName}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Renk</th>
+                <td>{{cardetail.colorName}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Açıklama</th>
+                <td>{{cardetail.description}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Fiyat</th>
+                <td>{{cardetail.dailyPrice}}</td>
+            </tr>
+            </tbody>
+        
+        </table>
+    </div>
+</div>
