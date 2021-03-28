@@ -12,7 +12,8 @@ export class BrandComponent implements OnInit {
 
   brands:Brand[]=[];
   currentBrand:Brand;
- 
+  filterText="";
+  
   constructor(private brandService:BrandService,private activatedRoute:ActivatedRoute) { }
   
   ngOnInit(): void {
@@ -25,10 +26,15 @@ export class BrandComponent implements OnInit {
     this.brandService.getBrands().subscribe(response =>{
       this.brands=response.data
       
+      
     })
   }
   setCurrentBrand(brand:Brand){
     this.currentBrand = brand;
+  }
+  removeCurrentBrand(){
+    this.filterText = "";
+    this.currentBrand = {brandId:-1,brandName:""};
   }
   getCurrentBrandClass(brand:Brand){
     if(brand == this.currentBrand){

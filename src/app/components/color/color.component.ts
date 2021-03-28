@@ -13,6 +13,7 @@ export class ColorComponent implements OnInit {
   colors:Color[]=[];
   dataLoaded =false;
   currentColor:Color;
+  filterText = "";
   constructor(private colorService:ColorService,private activatedRoute:ActivatedRoute) { }
   
   ngOnInit(): void {
@@ -34,6 +35,10 @@ export class ColorComponent implements OnInit {
     else{
       return "list-group-item"
     }
+  }
+  removeCurrentColor(){
+    this.filterText = "";
+    this.currentColor = {colorId:-1,colorName:""};
   }
   getAllColorClass(){
     if(!this.currentColor){

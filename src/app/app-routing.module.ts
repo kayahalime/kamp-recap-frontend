@@ -3,13 +3,16 @@ import { RouterModule, Routes } from '@angular/router';
 import { BrandComponent } from './components/brand/brand.component';
 import { CarComponent } from './components/car/car.component';
 import { CardetailComponent } from './components/cardetail/cardetail.component';
+import { RentComponent } from './components/rent/rent.component';
 
 const routes: Routes = [
   {path:"",pathMatch:"full",component:CarComponent,},
   {path:"cars",component:CarComponent},
   {path:"cars/brand/:brandId",component:CarComponent},
   {path:"cars/color/:colorId",component:CarComponent},
-  {path:"cars/cardetail/:carId",component:CardetailComponent}
+  {path:"cars/cardetail/:carId",component:CardetailComponent},
+  {path:"rent", component:RentComponent},
+  {path:"rent/:carId",component:RentComponent}
 ];
 
 @NgModule({

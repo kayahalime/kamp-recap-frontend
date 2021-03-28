@@ -1,43 +1,84 @@
-<br>
-<hr>
+<br />
+<hr />
 <div class="container">
-
-<div class="row">
+  <div class="row">
     <div class="col-md-6">
-        
-        <div class="carousel-inner">
-            <div *ngFor="let car of carImages" [class]="getCurrentImageClass(car)"  >
-              <img src =  "{{carImageBasePath}}{{car.imagePath}}"  class="img-thumbnail" alt="  {{car.imagePath }}"  />
+      <div class="carousel-inner">
+        <div
+          *ngFor="let carImage of carImages; index as i; first as firstImage"
+          class="carousel-item align-self-center"
+          [ngClass]="{ active: firstImage }"
+          style="height: 100%; width: 100%"
+        >
+          <img
+            src="{{ carImageBasePath }}{{ carImage.imagePath }}"
+            class="img-thumbnail"
+            alt="  {{ carImage.imagePath }}"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <table class="table table-success table-striped">
+        <tbody *ngFor="let cardetail of carDetails">
+          <tr>
+            <th scope="row">Model</th>
+            <td>{{ cardetail.carName }}</td>
+          </tr>
+          <tr>
+            <th scope="row">Marka</th>
+            <td>{{ cardetail.brandName }}</td>
+          </tr>
+          <tr>
+            <th scope="row">Renk</th>
+            <td>{{ cardetail.colorName }}</td>
+          </tr>
+          <tr>
+            <th scope="row">Açıklama</th>
+            <td>{{ cardetail.description }}</td>
+          </tr>
+          <tr>
+            <th scope="row">Fiyat</th>
+            <td>{{ cardetail.dailyPrice | currency: "TL":"₺" }}</td>
+          </tr>
+         <tr>
+          <th scope="row">Alış Tarihi</th>
+           <td>
+            <div class="form-group row">
+              <label for="example-date-input"  class="col-2 col-form-label"></label>
+              <div >
+                <input class="form-control" type="date" value="2011-08-19" id="example-date-input">
+              </div>
             </div>
-          </div>
-         
+            
+           </td>
+         </tr>
+         <tr>
+          <th scope="row">Teslim Tarihi</th>
+          
+           <td>
+            <div class="form-group row">
+              <label for="example-date-input"  class="col-2 col-form-label"></label>
+              <div >
+                <input class="form-control" type="date" value="2011-08-19" id="example-date-input">
+              </div>
+            </div>
+            
+           
+           </td>
+         </tr>
+         <tr>
+           <th scope="row"></th>
+          <td><div class="card-body" >
+            <section style="float:left">
+              <button type="button" routerLink="/rent/{{cardetail.carId}}" class="btn btn-danger">Kirala</button>
+            </section>
+          </div></td>
+        </tr>
+        </tbody>
+      </table>
+      <hr />
+   
     </div>
-    <div class="col-md-6">
-        <table class="table table-success table-striped">
-        
-            <tbody *ngFor="let cardetail of carDetails">
-            <tr>
-                <th scope="row">Model</th>
-                <td>{{cardetail.carName}}</td>
-            </tr>
-            <tr>
-                <th scope="row">Marka</th>
-                <td>{{cardetail.brandName}}</td>
-            </tr>
-            <tr>
-                <th scope="row">Renk</th>
-                <td>{{cardetail.colorName}}</td>
-            </tr>
-            <tr>
-                <th scope="row">Açıklama</th>
-                <td>{{cardetail.description}}</td>
-            </tr>
-            <tr>
-                <th scope="row">Fiyat</th>
-                <td>{{cardetail.dailyPrice}}</td>
-            </tr>
-            </tbody>
-        
-        </table>
-    </div>
+  </div>
 </div>
