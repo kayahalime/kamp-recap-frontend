@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
-import {FormsModule} from "@angular/forms";
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -17,6 +17,23 @@ import { FilterPipePipe } from './pipes/filter-pipe.pipe';
 import { BrandFilterPipePipe } from './pipes/brand-filter-pipe.pipe';
 import { ColorFilterPipePipe } from './pipes/color-filter-pipe.pipe';
 import { RentComponent } from './components/rent/rent.component';
+import { ToastrModule } from 'ngx-toastr';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { CartSummaryComponent } from './components/cart-summary/cart-summary.component';
+import { ColorBrandFilterComponent } from './components/color-brand-filter/color-brand-filter.component';
+import { CarAddComponent } from './components/car/car-add/car-add.component';
+import { ControlBoardComponent } from './components/control-board/control-board.component';
+import { BrandAddComponent } from './components/brand/brand-add/brand-add.component';
+import { ColorAddComponent } from './components/color/color-add/color-add.component';
+import { BrandListComponent } from './components/brand/brand-list/brand-list.component';
+import { BrandUpdateComponent } from './components/brand/brand-update/brand-update.component';
+import { ColorListComponent } from './components/color/color-list/color-list.component';
+import { ColorUpdateComponent } from './components/color/color-update/color-update.component';
+import { CarListComponent } from './components/car/car-list/car-list.component';
+import { CarUpdateComponent } from './components/car/car-update/car-update.component';
+import { LoginComponent } from './components/login/login.component';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [
@@ -31,15 +48,36 @@ import { RentComponent } from './components/rent/rent.component';
     FilterPipePipe,
     BrandFilterPipePipe,
     ColorFilterPipePipe,
-    RentComponent
+    RentComponent,
+    CartSummaryComponent,
+    ColorBrandFilterComponent,
+    CarAddComponent,
+    ControlBoardComponent,
+    BrandAddComponent,
+    ColorAddComponent,
+    BrandListComponent,
+    BrandUpdateComponent,
+    ColorListComponent,
+    ColorUpdateComponent,
+    CarListComponent,
+    CarUpdateComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
+    ToastrModule.forRoot({
+      positionClass:"toast-bottom-right"
+    })
   ],
-  providers: [],
+  providers: [
+    {provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,38 @@
+<div clas="container" >
+  <div class="row">
+    <div class="col-md-1">
+      <p>Renk:</p>
+    </div>
+    <div class="col-md-2">
+      <select class="form-select mt-1" [(ngModel)]="currentColor">
+        <option value="" disabled selected>Renkler</option>
+        <option value="{{ c.colorId }}" *ngFor="let c of colors">
+          {{ c.colorName }}
+        </option>
+      </select>
+    </div>
+ 
+
+  <div class="col-md-1">
+    <p>Marka:</p>
+  </div>
+  <div class="col-md-2">
+    <select class="form-select mt-1" [(ngModel)]="currentBrand">
+      <option value="{{ b.brandId }}" *ngFor="let b of brands">
+        {{ b.brandName }}
+      </option>
+    </select>
+  </div>
+
+  <div class="col-md-4">
+    <button
+      type="button"
+      class="btn btn-success mt-1"
+      (click)="getByFilter(currentBrand, currentColor)"
+    >
+      Filtrele
+    </button>
+    </div>
+  </div>
+</div>
+<br>

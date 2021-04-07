@@ -23,6 +23,9 @@
       <b>Marka:</b><span style="float: right"> {{ car.brandName }}</span>
     </li>
     <li class="list-group-item">
+      <b>Model Yılı:</b><span style="float: right"> {{ car.modelYear }}</span>
+    </li>
+    <li class="list-group-item">
       <b>Renk:</b><span style="float: right">{{ car.colorName }}</span>
     </li>
     <li class="list-group-item">
@@ -32,23 +35,15 @@
       <b>Fiyat:</b><span style="float: right">{{ car.dailyPrice |currency:'TL':'₺' }} </span>
     </li>
   </ul>
-  <div class="card-body">
-    <section style="float: left">
+  <div class="d-grid gap-5">
+    
+    <section  class="d-grid gap-2">
       <button
         routerLink="/cars/cardetail/{{ car.carId }}"
         type="button"
-        class="btn btn-success"
+        class="btn btn-danger "
       >
-        Detaylar
-      </button>
-    </section>
-    <section style="float: right">
-      <button
-       routerLink="/rent/{{car.carId}}"
-        type="button"
-        class="btn btn-danger"
-      >
-        Kirala
+        Aracı Kirala
       </button>
     </section>
   </div>

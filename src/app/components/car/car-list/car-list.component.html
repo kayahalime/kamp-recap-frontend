@@ -1,0 +1,31 @@
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Araç Id</th>
+        <th scope="col">Model Adı</th>
+        <th scope="col">Model Yılı</th>
+        <th scope="col">Marka Adı</th>
+        <th scope="col">Renk</th>
+        <th scope="col">Fiyat</th>
+        <th scope="col">Açıklama</th>
+           
+      </tr>
+    </thead>
+ 
+      <tr *ngFor="let car of cars">
+        <th scope="row">{{car.carId}}</th>
+        <td>{{car.carName}}</td>
+        <td>{{car.modelYear}}</td>
+        <td>{{car.brandName}}</td>
+        <td>{{car.colorName}}</td>
+        <td>{{car.dailyPrice}}</td>
+        <td>{{car.description}}</td>
+        
+        
+        <button type="button" class="btn btn-warning"  style="margin-bottom: 5px;" routerLink="/cars/update/{{car.carId}}">Güncelle</button>
+      </tr>
+    
+  </table>
+  <hr>
+  <button type="button" class="btn btn-danger"  style="margin-bottom: 5px;" routerLink="/cars/add">Araç Ekle</button>
+

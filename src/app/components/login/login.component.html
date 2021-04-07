@@ -1,0 +1,68 @@
+<body>
+  <section class="ftco-section">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-6 text-center mb-5"></div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-md-12 col-lg-10">
+          <div class="wrap d-md-flex">
+            <div
+              class="text-wrap p-4 p-lg-5 text-center d-flex align-items-center order-md-last"
+            >
+              <div class="text w-100">
+                <h2>Hoşgeldiniz, Lütfen Giriş Yapın</h2>
+                <p>Kayıt olmadınız mı?</p>
+                <a href="#" class="btn btn-white btn-outline-white">Kayıt ol</a>
+              </div>
+            </div>
+            <div class="login-wrap p-4 p-lg-5">
+              <div class="d-flex">
+                <div class="w-100">
+                  <h3 class="mb-4">Giriş Yap</h3>
+                </div>
+              </div>
+              <form [formGroup]="loginForm" class="signin-form">
+                <div class="form-group mb-3">
+                  <label class="label" for="name">E-posta</label>
+                  <input
+                    formControlName="email"
+                    type="email"
+                    id="email"
+                    class="form-control"
+                    placeholder="eposta@eposta.com"
+                    required
+                  />
+                </div>
+                <div class="form-group mb-3">
+                  <label class="label" for="password">Parola</label>
+                  <input
+                    formControlName="password"
+                    type="password"
+                    class="form-control"
+                    id="password"
+                    placeholder="Password"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <button
+                    type="submit"
+                    (click)="login()"
+                    class="form-control btn btn-primary submit px-3"
+                  >
+                    Giriş Yap
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script src="js/jquery.min.js"></script>
+  <script src="js/popper.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
