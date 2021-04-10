@@ -19,8 +19,11 @@
       </div>
     </div>
     <div class="col-md-6">
+      <div *ngFor="let cardetail of carDetails  let i = index" >
+        <div *ngIf="i<1">
       <table class="table table-success table-striped">
-        <tbody *ngFor="let cardetail of carDetails">
+        <tbody >
+          
           <tr>
             <th scope="row">Model</th>
             <td>{{ cardetail.carName }}</td>
@@ -69,16 +72,34 @@
          </tr>
          <tr>
            <th scope="row"></th>
-          <td><div class="card-body" >
+          <td><div class="card-body" *ngIf="isAuthenticated()" >
             <section style="float:left">
               <button type="button" routerLink="/rent/{{cardetail.carId}}" class="btn btn-danger">Kirala</button>
             </section>
           </div></td>
         </tr>
+        <tr>
+          <th>
+            <div class="card-body" *ngIf="!isAuthenticated()" >
+           <section >
+             <button type="button" routerLink="/login" class="btn btn-danger">Kiralamak İçin Giriş Yapın</button>
+           </section>
+         </div>
+          </th>
+         <td>
+          <div class="card-body" *ngIf="!isAuthenticated()" >
+            <section >
+              <button type="button" routerLink="/register" class="btn btn-danger">Üye Değilseniz Kayıt Olun</button>
+            </section>
+          </div>
+
+         </td>
+       </tr>
         </tbody>
       </table>
       <hr />
-   
+   </div>
+   </div>
     </div>
   </div>
 </div>

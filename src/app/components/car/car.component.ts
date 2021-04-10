@@ -98,10 +98,10 @@ export class CarComponent implements OnInit {
     }
   }
   getOneImage(id:number):any{
-    if( this.carImageService. getCarImageByCarId(id).subscribe(response=>{
+    if( this.carImageService. getCarImages(id).subscribe(response=>{
       this.carImages[id]=response.data[0].imagePath; 
       }) ){
-      this.carImageService. getCarImageByCarId(id).subscribe(response=>{
+      this.carImageService. getCarImages(id).subscribe(response=>{
       this.carImages[id]=response.data[0].imagePath; 
       }) 
     }

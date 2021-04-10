@@ -1,24 +1,31 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">Rentacar</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Rentacar</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         
-         <app-control-board></app-control-board>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-          </li>
-        </ul>
-        
-      </div>
+        <div  *ngIf="isAuthenticated()">
+        <app-control-board></app-control-board>
+        </div>
+      </ul>
+      <form class="d-flex">
+        <div *ngIf="!isAuthenticated()" class="text-end" style="margin-left: 10px; margin-right: 10px;">
+          <button routerLink="/login" type="button" class="btn btn-outline-primary me-2">Login</button>
+          <button routerLink="/register" type="button" class="btn btn-outline-warning">Sign-up</button>
+        </div>
+  
+        <div *ngIf="isAuthenticated()" class="dropdown dropstart" style="margin-left: 10px; margin-right: 10px;">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">{{ getCurrentUser().firstName }} {{ getCurrentUser().lastName }}</button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li><a class="dropdown-item" routerLink="/profile">My Profile</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" (click)="logout()" style="background-color: rgba(255, 0, 0, 0.705);">Logout</a></li>
+          </ul>
+        </div>
+      </form>
     </div>
-  </nav>
+  </div>
+</nav>

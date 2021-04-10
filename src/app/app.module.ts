@@ -34,6 +34,9 @@ import { CarUpdateComponent } from './components/car/car-update/car-update.compo
 import { LoginComponent } from './components/login/login.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { RegisterComponent } from './components/register/register.component';
+import { CarImagesComponent } from './components/car-images/car-images.component';
+import { CarImagesAddComponent } from './components/car-images/car-images-add/car-images-add.component';
+import { MyProfileComponent } from './components/my-profile/my-profile.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +65,10 @@ import { RegisterComponent } from './components/register/register.component';
     CarListComponent,
     CarUpdateComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    CarImagesComponent,
+    CarImagesAddComponent,
+    MyProfileComponent
   ],
   imports: [
     BrowserModule,

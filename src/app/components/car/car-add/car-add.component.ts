@@ -25,7 +25,7 @@ export class CarAddComponent implements OnInit {
       modelYear: ["",Validators.required],
       dailyPrice: ["",Validators.required],
       description: ["",Validators.required],
-      imagePath: ["default.jpg",Validators.required],
+     
      
     })
 

@@ -44,7 +44,12 @@ export class CarUpdateComponent implements OnInit {
     this.carUpdateForm=this.formBuilder.group({
      
       carId:[Number(this.carId),Validators.required],
-      carName:["",Validators.required]
+      carName:["",Validators.required],
+      modelYear:["",Validators.required],
+      brandId: ["", Validators.required],
+      colorId: ["",Validators.required],
+      dailyPrice: ["",Validators.required],
+      description:["",Validators.required],
       
     });
   }

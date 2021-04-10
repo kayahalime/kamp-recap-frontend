@@ -4,6 +4,8 @@ import { BrandAddComponent } from './components/brand/brand-add/brand-add.compon
 import { BrandListComponent } from './components/brand/brand-list/brand-list.component';
 import { BrandUpdateComponent } from './components/brand/brand-update/brand-update.component';
 import { BrandComponent } from './components/brand/brand.component';
+import { CarImagesAddComponent } from './components/car-images/car-images-add/car-images-add.component';
+import { CarImagesComponent } from './components/car-images/car-images.component';
 import { CarAddComponent } from './components/car/car-add/car-add.component';
 import { CarListComponent } from './components/car/car-list/car-list.component';
 import { CarUpdateComponent } from './components/car/car-update/car-update.component';
@@ -13,6 +15,8 @@ import { ColorAddComponent } from './components/color/color-add/color-add.compon
 import { ColorListComponent } from './components/color/color-list/color-list.component';
 import { ColorUpdateComponent } from './components/color/color-update/color-update.component';
 import { LoginComponent } from './components/login/login.component';
+import { MyProfileComponent } from './components/my-profile/my-profile.component';
+import { RegisterComponent } from './components/register/register.component';
 import { RentComponent } from './components/rent/rent.component';
 import { LoginGuard } from './guards/login.guard';
 
@@ -34,7 +38,10 @@ const routes: Routes = [
   {path:"colors/update/:colorId", component:ColorUpdateComponent},
   {path:"cars/getall", component:CarListComponent},
   {path:"cars/update/:carId", component:CarUpdateComponent},
-  {path:"login",component:LoginComponent}
+  {path:"login",component:LoginComponent},
+  {path:"register",component:RegisterComponent},
+  {path:"carImages/add/:carId", component:CarImagesAddComponent},
+  {path: 'profile', component: MyProfileComponent,canActivate:[LoginGuard]},
 ];
 
 @NgModule({
