@@ -74,9 +74,12 @@
            <th scope="row"></th>
           <td><div class="card-body" *ngIf="isAuthenticated()" >
             <section style="float:left">
-              <button type="button" routerLink="/rent/{{cardetail.carId}}" class="btn btn-danger">Kirala</button>
+              <button   type="button" routerLink="/rent"  class="btn btn-success btn-lg" >Kirala</button>
+             
             </section>
-          </div></td>
+          </div>
+        
+        </td>
         </tr>
         <tr>
           <th>
@@ -85,6 +88,7 @@
              <button type="button" routerLink="/login" class="btn btn-danger">Kiralamak İçin Giriş Yapın</button>
            </section>
          </div>
+        
           </th>
          <td>
           <div class="card-body" *ngIf="!isAuthenticated()" >
@@ -103,3 +107,4 @@
     </div>
   </div>
 </div>
+

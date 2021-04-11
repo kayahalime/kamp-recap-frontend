@@ -8,5 +8,5 @@
     routerLink="/cars/brand/{{brand.brandId}}"
      *ngFor="let brand of brands | brandFilterPipe:filterText" 
      [class]="getCurrentBrandClass(brand)"
-     class="list-group-item list-group-item-dark">{{brand.brandName}}</li>
+     class="list-group-item" >{{brand.brandName}}</li>
   </ul>

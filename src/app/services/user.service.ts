@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { FakeFindeksModel } from '../models/fakeFindeksModel';
 import { ListResponseModel } from '../models/listResponseModel';
+import { Register } from '../models/register';
 import { ResponseModel } from '../models/responseModel';
 import { SingleResponseModel } from '../models/singleResponseModel';
 import { User } from '../models/user';
@@ -30,7 +30,7 @@ export class UserService {
     return this.httpClient.post<SingleResponseModel<User>>(newPath, email);
   }
 
-  update(user:User):Observable<ResponseModel>{
+  update(user:Register,userId:number):Observable<ResponseModel>{
     let path = this.apiUrl + "update";
     return this.httpClient.post<ResponseModel>(path, user);
   }
@@ -47,8 +47,8 @@ export class UserService {
       password:user.password
     });
   }
-
-  fakeFindeks(findeksModel:FakeFindeksModel):Observable<SingleResponseModel<FakeFindeksModel>>{
-    return this.httpClient.post<SingleResponseModel<FakeFindeksModel>>(this.apiUrl+'users/getuserfindeks',findeksModel)
+  getById(userId:number):Observable<SingleResponseModel<Register>>{
+    return this.httpClient.get<SingleResponseModel<Register>>(this.apiUrl+"getbyid?userId="+userId);
   }
+
 }

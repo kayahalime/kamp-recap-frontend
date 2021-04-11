@@ -68,7 +68,8 @@ import { MyProfileComponent } from './components/my-profile/my-profile.component
     RegisterComponent,
     CarImagesComponent,
     CarImagesAddComponent,
-    MyProfileComponent
+    MyProfileComponent,
+
   ],
   imports: [
     BrowserModule,

@@ -26,10 +26,9 @@ export class CardetailComponent implements OnInit {
   carDetails: CarDetail[]; 
   carImages: CarImage[];
   carImageBasePath:string = "https://localhost:44306";
-  rentalDetail: Rental[];
-  userFindeksForm: FormGroup;
-  findeks: number;
-  carFindeks: number;
+  carDetailsLoad=false;
+  rentalControl = false;
+  rentalMessage="";
  
   constructor(
     private authService:AuthService,
@@ -51,6 +50,7 @@ export class CardetailComponent implements OnInit {
       if (params['carId']) {
         this.getCarDetail(params['carId']);
         this.getCarImageByCarId(params["carId"]);
+         this.getCarRentalControl(params["carId"])
       }
      
     });
@@ -77,50 +77,15 @@ export class CardetailComponent implements OnInit {
       return "carousel-item"
     }
   }
-  addCart(car: Car){
-    if (this.authService.isAuthenticated()){
-     if(this.localeStorageService.get('findeks')){
-       if (this.carFindeks < parseInt(this.localeStorageService.get('findeks')))
-       {
-         this.rentalService.getRentalByCarId(car.carId).subscribe(response => {
-           this.rentalDetail = response.data;
-         });
-         this.cartService.addtoCart(car);
-         this.router.navigate(['/cart']);
-       }else{
-         this.toastrService.error('Arabayı Kiralayamazsınız Findeks Puanınız yetmiyor.');
-       }
-     }else{
-       this.toastrService.info('Lütfen Findeks Puanınızı Hesaplayınız');
-     }
-    }else{
-      this.toastrService.info('Lütfen Giriş Yapınız');
-    }
-  }
-
-  createUserFindeksForm() {
-    this.userFindeksForm = this.formBuilder.group({
-      tc: ['', Validators.required],
-      dateYear: ['', Validators.required],
+  getCarRentalControl(carId:number) {
+    this.rentalService.getRentalCarControl(carId).subscribe((response) => { 
+      this.rentalControl=response.success;
+      this.rentalMessage=response.message; 
     });
   }
 
-  getUserFindeks() {
-    if (this.userFindeksForm.valid) {
-      if (parseInt(this.localeStorageService.get('findeks')) > 0){
-        this.toastrService.info('Findeks Puanınız: ' + this.localeStorageService.get('findeks'));
-      }else{
-        const userFindeksModel = Object.assign({}, this.userFindeksForm.value);
-        this.userService.fakeFindeks(userFindeksModel).subscribe(response => {
-          this.findeks = response.data.userFindeks;
-          this.localeStorageService.set('findeks', this.findeks.toString());
-          this.toastrService.info('Findeks Hesaplaması Başarılı. Findeks Puanınız: ' + this.findeks);
-        });
-      }
-    }else{
-      this.toastrService.info('Lütfen Findeks Hesaplaması Yapınız.');
-    }
-  }
+  
+ 
  
   
 }
